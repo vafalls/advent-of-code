@@ -1,7 +1,6 @@
-
-use std::fs::File;
-use std::io::{BufRead, Lines, BufReader};
 use std::iter::Iterator;
+use advent_of_code::read_lines_from_file;
+
 
 fn main() {
     let lines = read_lines_from_file("./src/input/day1/input_day_1.txt");
@@ -28,10 +27,4 @@ fn get_number_char<I: Iterator<Item=char>>(chars: I) -> char {
         }
     }
     panic!("foobar")
-}
-
-
-fn read_lines_from_file(filename: &str) -> Lines<BufReader<File>> {
-    let file = File::open(filename).unwrap();
-    BufReader::new(file).lines()
 }
