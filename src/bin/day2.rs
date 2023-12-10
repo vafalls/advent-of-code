@@ -46,7 +46,6 @@ impl FromStr for CubeColorCount {
     }
 }
 
-
 fn is_game_set_possible(game_set_str: &str) -> bool {
     for game_set in game_set_str.split(",") {
         if CubeColorCount::from_str(game_set).is_err() {
