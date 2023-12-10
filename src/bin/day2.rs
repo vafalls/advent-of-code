@@ -1,7 +1,7 @@
-use std::fmt::Debug;
-use std::str::FromStr;
 use advent_of_code::read_lines_from_file;
 use itertools::join;
+use std::fmt::Debug;
+use std::str::FromStr;
 
 #[derive(Debug, PartialEq)]
 enum CubeColor {
@@ -27,21 +27,30 @@ impl FromStr for CubeColorCount {
                 if _num > 12 {
                     return Err(());
                 }
-                Ok(CubeColorCount { color: CubeColor::Red, count: _num })
+                Ok(CubeColorCount {
+                    color: CubeColor::Red,
+                    count: _num,
+                })
             }
             ("green", Ok(_num)) => {
                 if _num > 13 {
                     return Err(());
                 }
-                Ok(CubeColorCount { color: CubeColor::Green, count: _num })
+                Ok(CubeColorCount {
+                    color: CubeColor::Green,
+                    count: _num,
+                })
             }
             ("blue", Ok(_num)) => {
                 if _num > 14 {
                     return Err(());
                 }
-                Ok(CubeColorCount { color: CubeColor::Blue, count: _num })
+                Ok(CubeColorCount {
+                    color: CubeColor::Blue,
+                    count: _num,
+                })
             }
-            _ => Err(())
+            _ => Err(()),
         }
     }
 }
@@ -63,7 +72,7 @@ fn parse_game(line: String) -> u8 {
         if !is_game_set_possible(game_set_str) {
             return 0;
         }
-    };
+    }
     return game_str.last().unwrap().parse::<u8>().unwrap();
 }
 
