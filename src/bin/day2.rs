@@ -5,59 +5,44 @@ use std::str::FromStr;
 
 #[derive(Debug, PartialEq)]
 enum CubeColor {
-    Red,
-    Green,
-    Blue,
+    Red = 12,
+    Green = 13,
+    Blue = 14,
 }
 
-struct CubeColorCount {
-    color: CubeColor,
-    count: u8,
-}
-
-impl FromStr for CubeColorCount {
+impl FromStr for CubeColor {
     type Err = ();
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
-        let _text = join(input.chars().filter(|a| a.is_alphabetic()), "");
-        let _num = join(input.chars().filter(|a| a.is_digit(10)), "").parse::<u8>();
-
-        match (_text.as_str(), _num) {
-            ("red", Ok(_num)) => {
-                if _num > 12 {
-                    return Err(());
-                }
-                Ok(CubeColorCount {
-                    color: CubeColor::Red,
-                    count: _num,
-                })
-            }
-            ("green", Ok(_num)) => {
-                if _num > 13 {
-                    return Err(());
-                }
-                Ok(CubeColorCount {
-                    color: CubeColor::Green,
-                    count: _num,
-                })
-            }
-            ("blue", Ok(_num)) => {
-                if _num > 14 {
-                    return Err(());
-                }
-                Ok(CubeColorCount {
-                    color: CubeColor::Blue,
-                    count: _num,
-                })
-            }
+        match input {
+            "red" => Ok(CubeColor::Red),
+            "green" => Ok(CubeColor::Green),
+            "blue" => Ok(CubeColor::Blue),
             _ => Err(()),
+        }
+    }
+}
+
+fn the_fn(input: &str) -> bool{
+    let _text = join(input.chars().filter(|a| a.is_alphabetic()), "");
+    let _num = join(input.chars().filter(|a| a.is_digit(10)), "").parse::<u8>();
+
+    return match (CubeColor::from_str(_text.as_str()), _num) {
+        (Ok(cube_color), Ok(_num)) => {
+            if _num > (cube_color as u8) {
+                return false;
+            }
+            true
+        }
+        _ => {
+            false
         }
     }
 }
 
 fn is_game_set_possible(game_set_str: &str) -> bool {
     for game_set in game_set_str.split(",") {
-        if CubeColorCount::from_str(game_set).is_err() {
+        if !the_fn(game_set) {
             return false;
         }
     }

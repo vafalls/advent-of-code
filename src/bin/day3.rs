@@ -50,11 +50,10 @@ fn calculate_part(number: &mut String, x_idx: usize, y_idx: usize, lines: &Vec<V
             tmp
         }
     } as usize;
-    let end_idx = x_idx;
     let previous_line = if y_idx > 0 { Some(&lines[y_idx - 1]) } else { None };
     let next_line = if y_idx < max_y_idx { Some(&lines[y_idx + 1]) } else { None };
 
-    if is_adjacent_number(start_idx, end_idx, previous_line, &lines[y_idx], next_line) {
+    if is_adjacent_number(start_idx, x_idx, previous_line, &lines[y_idx], next_line) {
         let res = number.parse::<u32>().unwrap();
         number.clear();
         res
