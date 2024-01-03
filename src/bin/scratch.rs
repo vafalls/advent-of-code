@@ -1,3 +1,5 @@
 fn main() {
-    println!("foobar");
+    for i in 1..=2 {
+        println!("foobar");
+    }
 }

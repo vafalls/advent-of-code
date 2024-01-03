@@ -13,3 +13,11 @@ pub fn read_file_into_arrays(filename: &str) -> Vec<Vec<char>> {
         .map(|line| line.chars().collect())
         .collect()
 }
+
+pub fn read_file_into_strings(filename: &str) -> Vec<String> {
+    read_to_string(filename)
+        .expect("Could not read file")
+        .lines()
+        .map(String::from)
+        .collect()
+}
