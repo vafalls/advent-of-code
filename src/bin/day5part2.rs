@@ -5,8 +5,6 @@ use advent_of_code::{read_file_into_strings};
 
 
 struct ConversionEntry {
-    source_start: u64,
-    source_end: u64,
     destination_start: u64,
     destination_end: u64,
     modifier: i64
@@ -21,8 +19,6 @@ impl FromStr for ConversionEntry {
         let source_start = lst[1].parse::<u64>().expect("Couldn't parse source start");
         let range_length = lst[2].parse::<u64>().expect("Couldn't parse range length");
         Ok(Self {
-            source_start,
-            source_end: source_start+range_length,
             destination_start,
             destination_end: destination_start+range_length,
             modifier: source_start as i64 - destination_start as i64

@@ -2,7 +2,6 @@ use std::cmp::Ordering;
 use std::collections::HashMap;
 use advent_of_code::{read_file_into_strings};
 use std::iter::Iterator;
-use std::str::FromStr;
 use itertools::{enumerate, Itertools};
 
 #[derive(Eq, PartialEq, Hash, Debug, Copy, Clone)]

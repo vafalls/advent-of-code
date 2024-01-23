@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use advent_of_code::{read_file_into_strings};
-use std::iter::{Cycle, Iterator};
+use std::iter::{Iterator};
 use std::str::FromStr;
 
 enum Direction {
