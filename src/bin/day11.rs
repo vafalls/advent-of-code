@@ -1,4 +1,4 @@
-use itertools::enumerate;
+use advent_of_code::common::day11::{get_galaxies, get_pairs};
 use advent_of_code::read_file_into_arrays;
 
 fn expand_universe(lines: Vec<Vec<char>>) -> Vec<Vec<char>> {
@@ -25,39 +25,6 @@ fn expand_universe(lines: Vec<Vec<char>>) -> Vec<Vec<char>> {
     return res
 }
 
-
-struct Galaxy {
-    x: usize,
-    y: usize,
-}
-
-struct GalaxyPair<'a> {
-    first: &'a Galaxy,
-    second: &'a Galaxy,
-    diff: u32
-}
-
-fn get_galaxies(lines: &Vec<Vec<char>>) -> Vec<Galaxy> {
-    let mut res: Vec<Galaxy> = Vec::new();
-    for (y_idx, y) in enumerate(lines) {
-        for (x_idx, x) in enumerate(y) {
-            if *x == '#' {
-                res.push(Galaxy {x: x_idx, y: y_idx});
-            }
-        }
-    }
-    res
-}
-
-fn get_pairs(galaxies: &Vec<Galaxy>) -> Vec<GalaxyPair> {
-    let mut res: Vec<GalaxyPair> = Vec::new();
-    for (idx, _) in enumerate(galaxies) {
-        for i in idx+1..galaxies.len() {
-            res.push(GalaxyPair{ first: &galaxies[idx], second: &galaxies[i], diff: 0})
-        }
-    }
-    res
-}
 
 fn main() {
     let lines = read_file_into_arrays("./src/input/day11/input.txt");
