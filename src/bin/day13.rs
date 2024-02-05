@@ -1,4 +1,5 @@
 use itertools::enumerate;
+use advent_of_code::common::day13::transpose;
 use advent_of_code::read_file_into_arrays;
 
 
@@ -28,19 +29,6 @@ fn find_rows_mirroring_point(rows: &Vec<Vec<char>>) -> usize {
         }
         res = r;
         break;
-    }
-    res
-}
-
-fn transpose(rows: Vec<Vec<char>>) -> Vec<Vec<char>> {
-    let mut res: Vec<Vec<char>> = Vec::new();
-
-    for c in 0..rows[0].len() {
-        let mut new_row = Vec::new();
-        for r in 0..rows.len() {
-            new_row.push(rows[r][c]);
-        }
-        res.push(new_row);
     }
     res
 }
